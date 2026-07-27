@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DALPA - Desarrollo y Agilidad de la Lectura y del Pensamiento Activo</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dalpa: {
+                            blue: '#00529B',
+                            cyan: '#00A4E4',
+                            dark: '#0f172a',
+                            light: '#f8fafc',
+                            accent: '#f59e0b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilo para simular la fijación central (foco visual) en el simulador */
+        .rsvp-word {
+            font-family: 'Inter', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        .highlight-letter {
+            color: #00A4E4;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
+
+    <!-- 1. HEADER & NAVIGATION -->
+    <header class="fixed w-full top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3">
+                <div class="bg-gradient-to-r from-dalpa-blue to-dalpa-cyan p-2 rounded-lg text-white font-black text-xl tracking-wider shadow-md">
+                    DALPA
+                </div>
+                <div class="hidden sm:block">
+                    <span class="text-sm font-bold block text-dalpa-blue dark:text-dalpa-cyan leading-none">MENTAL TECH</span>
+                    <span class="text-xs text-slate-500 dark:text-slate-400">Lectura & Pensamiento Activo</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Menu -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold">
+                <a href="#beneficios" class="hover:text-dalpa-cyan transition-colors">Beneficios</a>
+                <a href="#metodo" class="hover:text-dalpa-cyan transition-colors">El Método</a>
+                <a href="#simulador" class="hover:text-dalpa-cyan transition-colors">Simulador</a>
+                <a href="#productividad" class="hover:text-dalpa-cyan transition-colors">Productividad</a>
+                <a href="#faq" class="hover:text-dalpa-cyan transition-colors">Preguntas</a>
+            </nav>
+
+            <!-- Actions: Dark Mode & CTA -->
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="p-2.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon dark:hidden text-lg"></i>
+                    <i class="fa-solid fa-sun hidden dark:block text-lg text-amber-400"></i>
+                </button>
+                <a href="#simulador" class="bg-gradient-to-r from-dalpa-blue to-dalpa-cyan hover:from-dalpa-cyan hover:to-dalpa-blue text-white px-5 py-2.5 rounded-xl font-bold text-sm shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all">
+                    ¡Probar Gratis!
+                </a>
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-4 space-y-3 font-semibold shadow-inner">
+            <a href="#beneficios" class="block py-2 px-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Beneficios</a>
+            <a href="#metodo" class="block py-2 px-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">El Método</a>
+            <a href="#simulador" class="block py-2 px-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Simulador</a>
+            <a href="#productividad" class="block py-2 px-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Productividad</a>
+            <a href="#faq" class="block py-2 px-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Preguntas</a>
+        </div>
+    </header>
+
+    <!-- 2. HERO SECTION -->
+    <section class="pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden relative">
+        <!-- Background decorative elements -->
+        <div class="absolute top-1/4 left-0 w-72 h-72 bg-dalpa-cyan/10 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-10 right-0 w-96 h-96 bg-dalpa-blue/10 rounded-full blur-3xl -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-dalpa-cyan/10 text-dalpa-cyan border border-dalpa-cyan/20">
+                        <i class="fa-solid fa-brain mr-1.5 animate-pulse"></i> Mental Tech & Lectura Ágil
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+                        Multiplica tu velocidad de lectura <span class="bg-gradient-to-r from-dalpa-blue to-dalpa-cyan bg-clip-text text-transparent">hasta 9 o 12 veces</span>
+                    </h1>
+                    <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0">
+                        Desarrolla la agilidad de tu lectura y activa tu pensamiento con la tecnología mental de <strong>DALPA</strong>. Diseñado científicamente para erradicar los malos hábitos de lectura y expandir tu comprensión total en solo 10 minutos al día.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#simulador" class="bg-gradient-to-r from-dalpa-blue to-dalpa-cyan hover:from-dalpa-cyan hover:to-dalpa-blue text-white px-8 py-4 rounded-2xl font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all text-center flex items-center justify-center space-x-2">
+                            <span>Empezar Entrenamiento</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#metodo" class="bg-white dark:bg-slate-800 text-slate-800 dark:text-white border border-slate-200 dark:border-slate-700 px-8 py-4 rounded-2xl font-bold shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-all text-center">
+                            Conocer el Método
+                        </a>
+                    </div>
+                    <!-- Micro social proof inside Hero -->
+                    <div class="pt-6 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-slate-500 dark:text-slate-400">
+                        <div class="flex items-center space-x-1">
+                            <i class="fa-solid fa-circle-check text-dalpa-cyan"></i>
+                            <span>Sin regresiones</span>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <i class="fa-solid fa-circle-check text-dalpa-cyan"></i>
+                            <span>Sin subvocalización</span>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <i class="fa-solid fa-circle-check text-dalpa-cyan"></i>
+                            <span>Comprensión Activa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual Mockup (Flexor Visual Simulator Card) -->
+                <div class="lg:col-span-5 relative">
+                    <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-2xl border border-slate-100 dark:border-slate-700 relative overflow-hidden group">
+                        <!-- Card Header simulating active visual column workout -->
+                        <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-700">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                                <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                                <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                            </div>
+                            <span class="text-xs font-bold text-dalpa-cyan uppercase tracking-wider"><i class="fa-solid fa-bolt"></i> Ejercicio 3: Flexor Visual 1</span>
+                        </div>
+
+                        <!-- Column adaptation visualization -->
+                        <div class="py-6 space-y-4 font-mono text-center relative select-none">
+                            <div class="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px border-l-2 border-dashed border-dalpa-cyan/30 z-0"></div>
+
+                            <div class="relative z-10 grid grid-cols-3 gap-2 text-xs sm:text-sm text-slate-400">
+                                <span>todo</span>
+                                <span class="text-dalpa-blue dark:text-white font-bold">hijos</span>
+                                <span>jamás</span>
+                            </div>
+                            <div class="relative z-10 grid grid-cols-3 gap-2 text-xs sm:text-sm">
+                                <span class="text-slate-400">buen</span>
+                                <span class="text-dalpa-cyan font-extrabold scale-110 block">con</span>
+                                <span class="text-slate-400">abrimos</span>
+                            </div>
+                            <div class="relative z-10 grid grid-cols-3 gap-2 text-xs sm:text-sm text-slate-400">
+                                <span>hábito</span>
+                                <span class="text-dalpa-blue dark:text-white font-bold">el</span>
+                                <span>un</span>
+                            </div>
+                            <div class="relative z-10 grid grid-cols-3 gap-2 text-xs sm:text-sm text-slate-400">
+                                <span>se</span>
+                                <span class="text-dalpa-blue dark:text-white font-bold">ejemplo</span>
+                                <span>libro?</span>
+                            </div>
+                        </div>
+
+                        <!-- Instruction tag -->
+                        <div class="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-4 text-xs text-center border border-slate-100 dark:border-slate-800">
+                            <p class="font-bold text-slate-700 dark:text-slate-300">Técnica de Desplazamiento en Columnas</p>
+                            <p class="text-slate-500 dark:text-slate-400 mt-1">Fija la mirada únicamente en la columna central y capta las palabras de los costados con tu visión periférica.</p>
+                        </div>
+                    </div>
+                    <!-- Decorative back shadow -->
+                    <div class="absolute -inset-1 bg-gradient-to-r from-dalpa-blue to-dalpa-cyan rounded-3xl blur-xl opacity-30 -z-10 transform scale-95 translate-y-4"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SOCIAL PROOF & STATS -->
+    <section class="py-12 bg-white dark:bg-slate-800 border-y border-slate-200 dark:border-slate-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <p class="text-4xl font-extrabold text-dalpa-blue dark:text-dalpa-cyan leading-none">9 a 12x</p>
+                    <p class="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-2">Incremento potencial de velocidad</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-extrabold text-dalpa-blue dark:text-dalpa-cyan leading-none">10 min</p>
+                    <p class="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-2">De entrenamiento diario recomendado</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-extrabold text-dalpa-blue dark:text-dalpa-cyan leading-none">800+</p>
+                    <p class="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-2">Palabras por minuto de meta avanzada</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-extrabold text-dalpa-blue dark:text-dalpa-cyan leading-none">100%</p>
+                    <p class="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-2">Erradicación de vicios de lectura</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. BENEFICIOS CLAVE -->
+    <section id="beneficios" class="py-20 bg-slate-50 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-xs font-bold text-dalpa-cyan uppercase tracking-widest bg-dalpa-cyan/10 px-3 py-1 rounded-full">¿Por qué DALPA?</span>
+                <h2 class="text-3xl sm:text-4xl font-black">Desbloquea el máximo potencial de tu mente</h2>
+                <p class="text-slate-600 dark:text-slate-300">
+                    La velocidad de lectura y comprensión determinan tu éxito en un mundo saturado de información. Al dominar el método DALPA, obtendrás ventajas competitivas inmediatas.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+                <!-- Benefit Card 1 -->
+                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 border border-slate-100 dark:border-slate-700/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-dalpa-blue/10 dark:bg-dalpa-blue/20 flex items-center justify-center text-dalpa-blue dark:text-dalpa-cyan text-xl">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h3 class="text-lg font-bold">Impulsa tu carrera</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">
+                        Domina reportes, correos y libros técnicos en una fracción de tiempo. Tu nuevo conocimiento te posicionará por encima de tus colegas para mejores salarios.
+                    </p>
+                </div>
+
+                <!-- Benefit Card 2 -->
+                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 border border-slate-100 dark:border-slate-700/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-dalpa-cyan/10 dark:bg-dalpa-cyan/20 flex items-center justify-center text-dalpa-cyan text-xl">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-lg font-bold">Estudia menos, califica más</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">
+                        Optimiza tus horas de estudio universitario o profesional. Aprende contenidos de manera rápida y preséntate a tus exámenes con total confianza.
+                    </p>
+                </div>
+
+                <!-- Benefit Card 3 -->
+                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 border border-slate-100 dark:border-slate-700/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/10 dark:bg-amber-500/20 flex items-center justify-center text-amber-500 text-xl">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="text-lg font-bold">Ahorra valiosas horas</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">
+                        Reduce tu tiempo de lectura en un 1/3. Disfruta de más tiempo libre con tu familia, amigos o pasatiempos, sin el estrés de lecturas pendientes.
+                    </p>
+                </div>
+
+                <!-- Benefit Card 4 -->
+                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 border border-slate-100 dark:border-slate-700/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 dark:bg-emerald-500/20 flex items-center justify-center text-emerald-500 text-xl">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold">Vence la sobrecarga</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">
+                        No más agobio por montañas de documentos o libros de estudio. Absorbe, procesa y asocia información rápidamente, manteniendo la agilidad mental.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. EL MÉTODO DALPA & ELIMINACIÓN DE MALOS HÁBITOS -->
+    <section id="metodo" class="py-20 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left: Illustration / Text -->
+                <div class="space-y-6">
+                    <span class="text-xs font-bold text-dalpa-blue dark:text-dalpa-cyan uppercase tracking-widest bg-dalpa-blue/10 dark:bg-dalpa-blue/20 px-3 py-1 rounded-full">Erradicación Científica</span>
+                    <h2 class="text-3xl sm:text-4xl font-black leading-tight">Elimina tus malos hábitos de lectura. Automáticamente.</h2>
+                    <p class="text-slate-600 dark:text-slate-300">
+                        La mayoría lee a paso de tortuga debido a vicios de aprendizaje adquiridos en la infancia. El método DALPA utiliza flexores oculares y ejercicios estructurados en columnas para reentrenar tu cerebro de manera física y neuronal.
+                    </p>
+
+                    <!-- Habits comparison grid -->
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="text-red-500 p-1 bg-red-100 dark:bg-red-900/30 rounded-lg text-sm">
+                                <i class="fa-solid fa-xmark w-4 text-center"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Subvocalización (Voz mental)</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Repetir las palabras mentalmente limita tu velocidad a la velocidad de la palabra hablada (aprox. 150-200 PPM).</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="text-red-500 p-1 bg-red-100 dark:bg-red-900/30 rounded-lg text-sm">
+                                <i class="fa-solid fa-xmark w-4 text-center"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Regresiones (Retrocesos involuntarios)</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Volver a leer palabras o renglones anteriores debido a imprecisiones oculares o falta de atención concentrada.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="text-red-500 p-1 bg-red-100 dark:bg-red-900/30 rounded-lg text-sm">
+                                <i class="fa-solid fa-xmark w-4 text-center"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Fijación Visual Limitada</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Enfocar tus ojos palabra por palabra de forma estrecha, en lugar de captar grupos completos de palabras.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: DALPA Solution list -->
+                <div class="bg-gradient-to-br from-dalpa-blue/90 to-dalpa-cyan/90 p-8 sm:p-10 rounded-3xl text-white shadow-xl space-y-6">
+                    <h3 class="text-2xl font-black"><i class="fa-solid fa-brain"></i> El Enfoque DALPA</h3>
+                    <p class="text-white/80 text-sm">
+                        DALPA entrena tus ojos como un gimnasio entrena tus músculos, permitiéndote utilizar tu visión periférica y activar tu pensamiento activo.
+                    </p>
+
+                    <ul class="space-y-4">
+                        <li class="flex items-start space-x-3">
+                            <div class="bg-white/20 p-1 rounded-lg text-sm text-white">
+                                <i class="fa-solid fa-check w-4 text-center"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-sm">Flexores Visuales 1 y 2</h5>
+                                <p class="text-xs text-white/70">Ejercicios dedicados a estirar y flexibilizar los músculos oculares para lograr movimientos limpios y amplios.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <div class="bg-white/20 p-1 rounded-lg text-sm text-white">
+                                <i class="fa-solid fa-check w-4 text-center"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-sm">Punto Medio Superior</h5>
+                                <p class="text-xs text-white/70">Aprovecha la fijación en el espacio en blanco o el centro del renglón para absorber renglones completos en un solo golpe de vista.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <div class="bg-white/20 p-1 rounded-lg text-sm text-white">
+                                <i class="fa-solid fa-check w-4 text-center"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-sm">Esquema TIICR</h5>
+                                <p class="text-xs text-white/70">Estructura metodológica de asimilación intelectual de un libro (Título, Índice, Introducción, Contenido y Revisión).</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. INTERACTIVE RSVP SIMULATOR -->
+    <section id="simulador" class="py-20 bg-slate-100 dark:bg-slate-900/80 border-t border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center space-y-4 mb-12">
+                <span class="text-xs font-bold text-dalpa-cyan uppercase tracking-widest bg-dalpa-cyan/10 px-3 py-1 rounded-full">Simulador de Lectura Ágil</span>
+                <h2 class="text-3xl font-black">Prueba la velocidad RSVP de DALPA</h2>
+                <p class="text-sm text-slate-500 dark:text-slate-400">
+                    Experimenta la tecnología de Presentación Serial Visual Rápida (RSVP) que elimina la subvocalización y las regresiones automáticamente fijando tus ojos en un solo punto.
+                </p>
+            </div>
+
+            <!-- Simulator Widget -->
+            <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200/50 dark:border-slate-700 space-y-6">
+                <!-- Word Display Window -->
+                <div class="bg-slate-50 dark:bg-slate-900 rounded-2xl h-48 flex items-center justify-center border border-slate-200/50 dark:border-slate-800 relative overflow-hidden">
+                    <!-- Target crosshair simulation -->
+                    <div class="absolute inset-y-0 left-1/2 -translate-x-1/2 w-0.5 border-l border-dashed border-dalpa-cyan/25"></div>
+                    <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-0.5 border-t border-dashed border-dalpa-cyan/25"></div>
+
+                    <!-- Running RSVP Word -->
+                    <div id="rsvp-word-container" class="rsvp-word text-slate-800 dark:text-white relative z-10 select-none text-center">
+                        <span class="text-slate-400 text-lg sm:text-2xl">Presiona "Iniciar" para comenzar</span>
+                    </div>
+                </div>
+
+                <!-- Text input & speed config -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Text Selection -->
+                    <div class="space-y-2">
+                        <label for="sample-text-select" class="text-xs font-bold uppercase text-slate-400 tracking-wider">Texto de Prueba</label>
+                        <select id="sample-text-select" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-dalpa-cyan">
+                            <option value="atenas">Atenas, cuna de la democracia</option>
+                            <option value="universo">Los tres primeros minutos del Universo</option>
+                            <option value="dalpa-intro">¿Qué es el Método DALPA?</option>
+                        </select>
+                    </div>
+
+                    <!-- Speed Selector (WPM) -->
+                    <div class="space-y-2">
+                        <label for="wpm-select" class="text-xs font-bold uppercase text-slate-400 tracking-wider">Velocidad (WPM)</label>
+                        <select id="wpm-select" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-dalpa-cyan">
+                            <option value="200">200 PPM (Inicial)</option>
+                            <option value="400" selected>400 PPM (Medio)</option>
+                            <option value="600">600 PPM (Avanzado)</option>
+                            <option value="800">800 PPM (Superaprendizaje)</option>
+                        </select>
+                    </div>
+
+                    <!-- Simulator Controls -->
+                    <div class="flex items-end justify-center md:justify-start gap-4">
+                        <button id="sim-play-btn" class="w-full bg-gradient-to-r from-dalpa-blue to-dalpa-cyan text-white px-6 py-2.5 rounded-xl font-bold shadow-md hover:shadow-lg transition-all flex items-center justify-center space-x-2">
+                            <i id="play-icon" class="fa-solid fa-play"></i>
+                            <span id="play-text">Iniciar</span>
+                        </button>
+                        <button id="sim-reset-btn" class="px-4 py-2.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Custom text entry area -->
+                <div class="space-y-2">
+                    <label for="custom-text" class="text-xs font-bold uppercase text-slate-400 tracking-wider">O introduce tu propio texto de lectura:</label>
+                    <textarea id="custom-text" class="w-full h-24 p-3 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-dalpa-cyan focus:border-transparent resize-none" placeholder="Copia y pega aquí cualquier documento académico, reporte o artículo para leerlo 3 veces más rápido..."></textarea>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. PRODUCTIVIDAD MENTAL TECH -->
+    <section id="productividad" class="py-20 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-xs font-bold text-dalpa-cyan uppercase tracking-widest bg-dalpa-cyan/10 px-3 py-1 rounded-full">Suite de Productividad</span>
+                <h2 class="text-3xl sm:text-4xl font-black">Funciones Avanzadas de Lectura Ágil</h2>
+                <p class="text-slate-600 dark:text-slate-300">
+                    DALPA va más allá de un simple manual de ejercicios en PDF; constituye una metodología científica para optimizar tu adquisición diaria de conocimiento.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex flex-col justify-between hover:shadow-lg transition-shadow">
+                    <div class="space-y-4">
+                        <div class="text-dalpa-blue text-xl"><i class="fa-solid fa-book-open"></i></div>
+                        <h4 class="font-bold text-lg">Biblioteca en la Nube</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Sincroniza tus libros, PDFs de estudio e informes técnicos para leerlos rápidamente en cualquier pantalla, recordando tu última posición exacta.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex flex-col justify-between hover:shadow-lg transition-shadow">
+                    <div class="space-y-4">
+                        <div class="text-dalpa-cyan text-xl"><i class="fa-solid fa-chart-line"></i></div>
+                        <h4 class="font-bold text-lg">Reportes de Comprensión</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Registra tus marcas de PPM y mide tu porcentaje de asimilación intelectual de forma sistemática con cada lectura de control.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="p-6 rounded-3xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex flex-col justify-between hover:shadow-lg transition-shadow">
+                    <div class="space-y-4">
+                        <div class="text-amber-500 text-xl"><i class="fa-solid fa-language"></i></div>
+                        <h4 class="font-bold text-lg">Potenciador de Vocabulario</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Consulta términos complejos mediante el diccionario integrado sin interrumpir tu lectura o perder tu enfoque de fijación central.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. GARANTÍA INTRÉPIDA DE SATISFACCIÓN -->
+    <section class="py-20 bg-gradient-to-r from-dalpa-blue to-dalpa-cyan text-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 relative z-10">
+            <div class="inline-flex p-4 bg-white/10 rounded-full text-3xl mb-2">
+                <i class="fa-solid fa-shield-halved text-amber-300"></i>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-black">Nuestra Intrépida Garantía de Reembolso de 12 Meses</h2>
+            <p class="text-lg text-white/90 max-w-2xl mx-auto">
+                Estamos tan seguros de la agilidad que obtendrás con el método DALPA, que si tras realizar las prácticas diarias de 10 minutos durante las primeras semanas no duplicas tu velocidad de lectura y comprensión, puedes solicitar un reembolso inmediato.
+            </p>
+            <div class="pt-4">
+                <span class="inline-block px-6 py-2.5 rounded-full text-xs font-bold bg-white/20 uppercase tracking-widest border border-white/30">
+                    Tu inversión y tu mente están 100% protegidas
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. PREGUNTAS FRECUENTES (FAQ) -->
+    <section id="faq" class="py-20 bg-slate-50 dark:bg-slate-900/50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+            <div class="text-center space-y-4 mb-16">
+                <span class="text-xs font-bold text-dalpa-cyan uppercase tracking-widest bg-dalpa-cyan/10 px-3 py-1 rounded-full">Soporte y Respuestas</span>
+                <h2 class="text-3xl font-black">Preguntas Frecuentes</h2>
+                <p class="text-slate-600 dark:text-slate-300">¿Tienes dudas sobre cómo funciona la agilidad visual o el entrenamiento mental?</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Accordion item 1 -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700/50 overflow-hidden shadow-sm">
+                    <button class="w-full px-6 py-5 text-left font-bold flex items-center justify-between text-slate-800 dark:text-white faq-toggle">
+                        <span>¿Para qué edad es adecuado el método DALPA?</span>
+                        <i class="fa-solid fa-chevron-down transition-transform duration-200"></i>
+                    </button>
+                    <div class="hidden px-6 pb-5 text-sm text-slate-500 dark:text-slate-400 border-t border-slate-50 dark:border-slate-800 pt-4">
+                        El método está diseñado y es sumamente recomendado para personas de 10 años en adelante. Es especialmente valioso para estudiantes universitarios, investigadores y profesionales que se enfrentan diariamente a una gran sobrecarga de lectura e información.
+                    </div>
+                </div>
+
+                <!-- Accordion item 2 -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700/50 overflow-hidden shadow-sm">
+                    <button class="w-full px-6 py-5 text-left font-bold flex items-center justify-between text-slate-800 dark:text-white faq-toggle">
+                        <span>¿Cuánto tiempo toma ver resultados medibles?</span>
+                        <i class="fa-solid fa-chevron-down transition-transform duration-200"></i>
+                    </button>
+                    <div class="hidden px-6 pb-5 text-sm text-slate-500 dark:text-slate-400 border-t border-slate-50 dark:border-slate-800 pt-4">
+                        La mayoría de los usuarios duplica su velocidad de lectura y mantiene más del 60% de comprensión tras los primeros 14 días, entrenando tan solo 5 a 10 minutos al día utilizando las técnicas y flexores de fijación visual.
+                    </div>
+                </div>
+
+                <!-- Accordion item 3 -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700/50 overflow-hidden shadow-sm">
+                    <button class="w-full px-6 py-5 text-left font-bold flex items-center justify-between text-slate-800 dark:text-white faq-toggle">
+                        <span>¿En qué consiste el entrenamiento ocular de los "Flexores"?</span>
+                        <i class="fa-solid fa-chevron-down transition-transform duration-200"></i>
+                    </button>
+                    <div class="hidden px-6 pb-5 text-sm text-slate-500 dark:text-slate-400 border-t border-slate-50 dark:border-slate-800 pt-4">
+                        Igual que los flexores de un gimnasio físico, los flexores visuales de DALPA consisten en entrenamientos de movimientos rápidos ojo-cerebro diseñados para expandir tu campo focal. Esto entrena físicamente tus ojos para fijarse en la zona central de un renglón, captando instantáneamente las palabras periféricas de los costados de un solo vistazo.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="bg-dalpa-blue text-white px-3 py-1.5 rounded-lg font-black text-sm tracking-wider">
+                    DALPA
+                </div>
+                <span class="text-xs">© 2026 DALPA Mental Tech. Todos los derechos reservados.</span>
+            </div>
+            <div class="flex space-x-6 text-sm">
+                <a href="#" class="hover:text-white transition-colors">Términos</a>
+                <a href="#" class="hover:text-white transition-colors">Privacidad</a>
+                <a href="#" class="hover:text-white transition-colors">Soporte</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR INTERACTIVITY -->
+    <script>
+        // --- 1. DARK MODE TOGGLE ---
+        const themeToggle = document.getElementById('theme-toggle');
+        // Inicializar basándonos en preferencia del usuario o del sistema
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // --- 2. MOBILE MENU ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Cerrar menú móvil al hacer clic en un enlace
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // --- 3. FAQ ACCORDION ---
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // --- 4. RSVP SPEED READING SIMULATOR ---
+        const rsvpDisplay = document.getElementById('rsvp-word-container');
+        const sampleTextSelect = document.getElementById('sample-text-select');
+        const wpmSelect = document.getElementById('wpm-select');
+        const playBtn = document.getElementById('sim-play-btn');
+        const playIcon = document.getElementById('play-icon');
+        const playText = document.getElementById('play-text');
+        const resetBtn = document.getElementById('sim-reset-btn');
+        const customTextArea = document.getElementById('custom-text');
+
+        // Textos de prueba pre-cargados de DALPA
+        const textDatabase = {
+            atenas: "En el extremo sur de Grecia se encuentra una pequeña península, bañada por las azules aguas del Mediterráneo, montañosa, de rocas peladas y estériles, con tres pequeñas llanuras interiores que constituyen el único espacio capaz de albergar una exigua población; de clima cálido y seco, el suelo produce trigo, cebada, olivos, higos y vid, en cantidades escasas, pero de calidad excelente.",
+            universo: "En el comienzo hubo una explosión. No una explosión como las que conocemos en la Tierra, que parten de un centro definido y se expanden hasta abarcar una parte más o menos grande del aire circundante, sino una explosión que se produjo simultáneamente en todas partes, llenando todo el espacio desde el comienzo.",
+            "dalpa-intro": "El Sistema DALPA nos invita a reflexionar acerca del nivel de lectura de la población en general. Su principal objetivo será ejercitarse para lograr un incremento de entre 9 a 12 veces más rápida su velocidad inicial de lectura, con la comprensión y el conocimiento de diferentes técnicas, así como de diversos métodos de estudio."
+        };
+
+        let wordsArray = [];
+        let currentWordIndex = 0;
+        let isPlaying = false;
+        let rsvpInterval = null;
+
+        function getWords() {
+            // Si el usuario ingresó un texto personalizado, usarlo. De lo contrario, usar el del selector.
+            const customVal = customTextArea.value.trim();
+            const textToProcess = customVal ? customVal : textDatabase[sampleTextSelect.value];
+            // Dividir en palabras ignorando espacios múltiples
+            return textToProcess.split(/\s+/).filter(word => word.length > 0);
+        }
+
+        // Estilizado avanzado de foco visual de RSVP (resaltar la letra central de la palabra)
+        function formatWord(word) {
+            if (word.length <= 1) {
+                return `<span class="highlight-letter">${word}</span>`;
+            }
+            const pivotIndex = Math.floor(word.length / 3);
+            const prefix = word.substring(0, pivotIndex);
+            const pivotChar = word.charAt(pivotIndex);
+            const suffix = word.substring(pivotIndex + 1);
+
+            return `${prefix}<span class="highlight-letter">${pivotChar}</span>${suffix}`;
+        }
+
+        function displayNextWord() {
+            if (currentWordIndex < wordsArray.length) {
+                const word = wordsArray[currentWordIndex];
+                rsvpDisplay.innerHTML = formatWord(word);
+                currentWordIndex++;
+            } else {
+                stopSimulator();
+                rsvpDisplay.innerHTML = `<span class="text-emerald-500 text-2xl font-bold"><i class="fa-solid fa-circle-check"></i> ¡Lectura Completada!</span>`;
+            }
+        }
+
+        function startSimulator() {
+            if (wordsArray.length === 0) {
+                wordsArray = getWords();
+                currentWordIndex = 0;
+            }
+
+            const wpm = parseInt(wpmSelect.value);
+            const speedInterval = (60 / wpm) * 1000; // Milisegundos por palabra
+
+            isPlaying = true;
+            playIcon.className = "fa-solid fa-pause";
+            playText.textContent = "Pausar";
+
+            rsvpInterval = setInterval(displayNextWord, speedInterval);
+        }
+
+        function stopSimulator() {
+            isPlaying = false;
+            playIcon.className = "fa-solid fa-play";
+            playText.textContent = "Continuar";
+            clearInterval(rsvpInterval);
+        }
+
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                stopSimulator();
+            } else {
+                startSimulator();
+            }
+        });
+
+        resetBtn.addEventListener('click', () => {
+            stopSimulator();
+            wordsArray = [];
+            currentWordIndex = 0;
+            rsvpDisplay.innerHTML = `<span class="text-slate-400 text-lg sm:text-2xl">Presiona "Iniciar" para comenzar</span>`;
+            playText.textContent = "Iniciar";
+        });
+
+        // Reiniciar si cambia el texto seleccionado o si el usuario escribe
+        sampleTextSelect.addEventListener('change', () => {
+            customTextArea.value = ""; // Limpiar personalizado
+            resetBtn.click();
+        });
+
+        customTextArea.addEventListener('input', () => {
+            resetBtn.click();
+        });
+
+        wpmSelect.addEventListener('change', () => {
+            if (isPlaying) {
+                stopSimulator();
+                startSimulator();
+            }
+        });
+    </script>
+</body>
+</html>
